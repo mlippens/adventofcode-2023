@@ -1,0 +1,14 @@
+{
+  "name": "part-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "main": "ts-node index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2"
+  }
+}
