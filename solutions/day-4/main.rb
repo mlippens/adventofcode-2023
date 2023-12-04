@@ -9,20 +9,20 @@ cards = lines.map do |l|
   {
     id: card_id,
     input: input,
-    winning: winning
+    winning: (input.filter { |i| winning.include?(i) }).length
   }
 end
 
-result = cards.inject(0) do |sum, card|
-  input = card[:input]
+result = 0
+stack = Array.new(cards)
+until stack.empty?
+  card = stack.shift
+  result += 1
   winning = card[:winning]
 
-  points = input.inject(0) do |card_sum, i|
-    card_sum + (winning.include?(i) ? 1 : 0)
+  cards[card[:id], winning].each do |c|
+    stack.unshift(c)
   end
-  result = points.positive? ? (points - 1).times.inject(1) { |r| r * 2 } : 0
-  puts "Points #{points} for card #{card[:id]}: endresult #{result}"
-  sum + result
 end
 
 puts result
